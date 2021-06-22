@@ -1,8 +1,8 @@
 # Visual Attributes in the Wild (VAW)
 
-This repository provides data for the VAW dataset as described in the <a href="#" target="_blank">CVPR 2021</a> Paper:
+This repository provides data for the VAW dataset as described in the <a href="https://openaccess.thecvf.com/content/CVPR2021/html/Pham_Learning_To_Predict_Visual_Attributes_in_the_Wild_CVPR_2021_paper.html" target="_blank">CVPR 2021</a> Paper:
 
-### [Learning to Predict Visual Attributes in the Wild](#)
+### [Learning to Predict Visual Attributes in the Wild](https://openaccess.thecvf.com/content/CVPR2021/html/Pham_Learning_To_Predict_Visual_Attributes_in_the_Wild_CVPR_2021_paper.html)
 [Khoi Pham](https://scholar.google.com/citations?user=o7hS8EcAAAAJ&hl=en),
 [Kushal Kafle](https://kushalkafle.com), 
 [Zhihong Ding](https://research.adobe.com/person/zhihong-ding/),
