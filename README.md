@@ -64,11 +64,13 @@ train/val set. The website also shows interactive demo for our SCoNE algorithm a
 Please cite our CVPR 2021 paper if you use the VAW dataset or the SCoNE algorithm in your work.
 
 ````
-@inproceedings{pham2021vaw,
-  title={Learning to Predict Visual Attributes in the Wild},
-  author={Pham, Khoi and Kafle, Kushal and Ding, Zhihong and Lin, Zhe and Tran, Quan and Cohen, Scott and Shrivastava, Abhinav},
-  booktitle={CVPR},
-  year={2021}
+@InProceedings{Pham_2021_CVPR,
+    author    = {Pham, Khoi and Kafle, Kushal and Lin, Zhe and Ding, Zhihong and Cohen, Scott and Tran, Quan and Shrivastava, Abhinav},
+    title     = {Learning To Predict Visual Attributes in the Wild},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2021},
+    pages     = {13018-13028}
 }
 ````
 
