@@ -1,9 +1,10 @@
-# Visual Attributes in the Wild (VAW)
+# Visual Attributes in the Wild (VAW) and Large Scale Attributes (LSA) Dataset
 
-This repository provides data for the VAW dataset as described in the <a href="https://openaccess.thecvf.com/content/CVPR2021/html/Pham_Learning_To_Predict_Visual_Attributes_in_the_Wild_CVPR_2021_paper.html" target="_blank">CVPR 2021</a> Paper:
-
+This repository provides data for the VAW dataset as described in the <a href="https://cvpr2021.thecvf.com/" target="_blank">CVPR 2021</a> Paper:
 ### [Learning to Predict Visual Attributes in the Wild](https://openaccess.thecvf.com/content/CVPR2021/html/Pham_Learning_To_Predict_Visual_Attributes_in_the_Wild_CVPR_2021_paper.html)
-[Khoi Pham](https://scholar.google.com/citations?user=o7hS8EcAAAAJ&hl=en),
+and the LSA dataset described in our <a href="https://eccv2022.ecva.net/" target="_blank">ECCV 2022</a> Paper:
+### [Improving Closed and Open-Vocabulary Attribute Prediction using Transformers](https://vkhoi.github.io/TAP/)
+[Khoi Pham](https://vkhoi.github.io/),
 [Kushal Kafle](https://kushalkafle.com), 
 [Zhihong Ding](https://research.adobe.com/person/zhihong-ding/),
 [Zhe Lin](https://research.adobe.com/person/zhe-lin/),
@@ -13,17 +14,34 @@ This repository provides data for the VAW dataset as described in the <a href="h
  
 ![VAW Main Image](images/vaw_hero.png)
 
-# Dataset Setup
+- [Part I: VAW DATASET](#part-i--vaw-dataset)
+  * [Dataset Setup](#dataset-setup)
+    + [Annotation Format](#annotation-format)
+  * [Download Images](#download-images)
+  * [Explore Data and View Live Demo](#explore-data-and-view-live-demo)
+  * [VAW Dataset Statistics and Evaluation](#vaw-dataset-statistics-and-evaluation)
+    + [VAW Basic Stats](#vaw-basic-stats)
+    + [Evaluation](#evaluation)
+- [PART II: LSA DATASET](#part-ii--lsa-dataset)
+  * [Introduction](#introduction)
+  * [Download and Setup LSA Annotations](#download-and-setup-lsa-annotations)
+    + [Annotation Format](#annotation-format-1)
+    + [Download Images](#download-images-1)
+- [Citation](#citation)
+  * [Disclaimer and Contact](#disclaimer-and-contact)
+
+
+# Part I: VAW DATASET
+
+## Dataset Setup
 
 Our VAW dataset is partly based on the annotations in the 
 [GQA](https://cs.stanford.edu/people/dorarad/gqa/about.html) and 
-the [VG-PhraseCut](https://github.com/ChenyunWu/PhraseCutDataset) datasets.  
-Therefore, the images in the VAW dataset come from the [Visual Genome](https://visualgenome.org/) dataset which is also the source of the images in the GQA and the VG-Phrasecut datasets. 
-This section outlines the annotation format and basic statistics of our dataset.
+the [VG-PhraseCut](https://github.com/ChenyunWu/PhraseCutDataset) datasets. Therefore, the images in the VAW dataset come from the [Visual Genome](https://visualgenome.org/) dataset which is also the source of the images in the GQA and the VG-Phrasecut datasets. This section outlines the annotation format and basic statistics of our dataset.
 
-## Annotation Format
+### Annotation Format
 
-The annotations are found in ``data/train_part1.json``, ``data/train_part2.json`` , `data/val.json` and `data/test.json` for train (split into two parts to circumvent github file-size limit) , validation and test splits in the VAW dataset respectively.
+The annotations are found in ``data/train_part1.json``, ``data/train_part2.json`` , `data/val.json` and `data/test.json` for train (split into two parts to circumvent github file-size limit), validation and test splits in the VAW dataset respectively.
 The files consist of the following fields:
 
 ```
@@ -46,9 +64,9 @@ Head over to [our accompanying website](http://vawdataset.com) to explore the da
 The website allows exploration of the VAW dataset by filtering our annotations by objects, positive attributes, or negative attributes in the 
 train/val set. The website also shows interactive demo for our SCoNE algorithm as described in our paper.
 
-# Dataset Statistics
+## VAW Dataset Statistics and Evaluation
 
-### Basic Stats
+### VAW Basic Stats
 
 | Detail      |  Stat |
 | :---        |    :----:   |
@@ -61,7 +79,7 @@ train/val set. The website also shows interactive demo for our SCoNE algorithm a
 | Average Annotation per Instance  (Val)  | 7.03      |
 
 
-## Evaluation
+### Evaluation
 
 The evaluation script is provided in `eval/evaluator.py`. 
 We also provide `eval/eval.py` as an example to show how to use the evaluation script. 
@@ -85,6 +103,38 @@ We recently updated the grouping of attributes, So, there is a small discrepancy
 between the scores of our `eval/pred.npy` versus the numbers reported in the paper on each attribute group. 
 A detailed attribute-wise breakdown will also be saved in a format shown in `eval/output_detailed.txt`.
 
+# PART II: LSA DATASET
+
+## Introduction
+
+The VAW dataset contains mostly adjective and a few action and interaction attributes. Hence in our next work, we expand the definition of attributes to include adjective- as well as action- and interaction-based properties from the point-of-view of a given object. To this end, we extract object-centric attributes and interactions from large datasets containing grounded, weakly grounded, and ungrounded image-text pairs. 
+
+## Download and Setup LSA Annotations
+
+Please head over to the [releases tab](https://github.com/adobe-research/vaw_dataset/releases) to download the LSA dataset annotations.
+There are 3 splits - train, val, test - with their respective JSON files that contain the attribute annotations we extract and aggregate 
+from Visual Genome, GQA, Flickr30K-Entities, MS-COCO Captions 2017, COCO Attributes, and Localized Narratives.
+
+The list of seen and unseen attributes are provided in the folder `common2rare` and `common2common`, which corresponds to the two experiments we conduct in the paper.
+
+### Annotation Format
+
+The annotation files have the following format. Each JSON file contains a list in which every element is the annotation for an image with the following fields:
+* image_id: id of the image with the format **<dataset_id>_\<id>**, where **dataset_id** can be vg (Visual Genome), flickr (Flickr30K-Entities), coco (MS-COCO), oi (OpenImages). The **id** corresponds to actual image ids from the corresponding datasets. 
+* objects: list of object instances in the image. Each object instance contains the following:
+    * instance_id: id of the instance.
+    * object: category name.
+    * attributes: list of attributes.
+    * box: bounding box [left, top, right bottom]. This could contain all -1 values if there is no box given. The values can also be all float, which means they are coordinates relative to the image width and height.
+    * ground: can be `box` (from VG, GQA, Flickr30K-Entities, COCO-Attributes), `none` (from COCO Captions), `segmentationmask` (from COCO-Attributes), `mousetrace` (from Localized Narratives).
+
+### Download Images
+
+Please use dataset_id to determine what dataset an image belongs to. You will need to download the images from those datasets separately:
+* Visual Genome & GQA: https://visualgenome.org/
+* Flickr30K-Entities: https://bryanplummer.com/Flickr30kEntities/
+* MS-COCO: https://cocodataset.org/#home
+* OpenImages: https://storage.googleapis.com/openimages/web/download.html
 
 # Citation
 Please cite our CVPR 2021 paper if you use the VAW dataset or the SCoNE algorithm in your work.
@@ -97,6 +147,16 @@ Please cite our CVPR 2021 paper if you use the VAW dataset or the SCoNE algorith
     month     = {June},
     year      = {2021},
     pages     = {13018-13028}
+}
+````
+and cite our ECCV 2022 paper if you use the LSA dataset or blah blah blah
+
+````
+@InProceedings{Pham_2022_ECCV,
+    author    = {Pham, Khoi and Kafle, Kushal and Lin, Zhe and Ding, Zhihong and Cohen, Scott and Tran, Quan and Shrivastava, Abhinav},
+    title     = {Improving Closed and Open-Vocabulary Attribute Prediction using Transformers},
+    booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+    year      = {2022}
 }
 ````
 
