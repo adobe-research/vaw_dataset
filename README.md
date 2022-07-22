@@ -111,7 +111,7 @@ The VAW dataset contains mostly adjective and a few action and interaction attri
 
 ## Download and Setup LSA Annotations
 
-Please head over to the [releases tab](https://github.com/adobe-research/vaw_dataset/releases) to download the LSA dataset annotations.
+Please head over to the [releases tab](https://github.com/adobe-research/vaw_dataset/releases/tag/v1.0) to download the LSA dataset annotations.
 There are 3 splits - train, val, test - with their respective JSON files that contain the attribute annotations we extract and aggregate 
 from Visual Genome, GQA, Flickr30K-Entities, MS-COCO Captions 2017, COCO Attributes, and Localized Narratives.
 
