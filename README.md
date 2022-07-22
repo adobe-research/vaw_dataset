@@ -14,7 +14,7 @@ and the LSA dataset described in our <a href="https://eccv2022.ecva.net/" target
  
 ![VAW Main Image](images/vaw_hero.png)
 
-- [Part I: VAW DATASET](#part-i--vaw-dataset)
+- [Part I: VAW DATASET](#the-vaw-dataset)
   * [Dataset Setup](#dataset-setup)
     + [Annotation Format](#annotation-format)
   * [Download Images](#download-images)
@@ -22,7 +22,7 @@ and the LSA dataset described in our <a href="https://eccv2022.ecva.net/" target
   * [VAW Dataset Statistics and Evaluation](#vaw-dataset-statistics-and-evaluation)
     + [VAW Basic Stats](#vaw-basic-stats)
     + [Evaluation](#evaluation)
-- [PART II: LSA DATASET](#part-ii--lsa-dataset)
+- [PART II: LSA DATASET](#the-lsa-dataset)
   * [Introduction](#introduction)
   * [Download and Setup LSA Annotations](#download-and-setup-lsa-annotations)
     + [Annotation Format](#annotation-format-1)
@@ -31,7 +31,7 @@ and the LSA dataset described in our <a href="https://eccv2022.ecva.net/" target
   * [Disclaimer and Contact](#disclaimer-and-contact)
 
 
-# Part I: VAW DATASET
+# The VAW Dataset
 
 ## Dataset Setup
 
@@ -103,7 +103,7 @@ We recently updated the grouping of attributes, So, there is a small discrepancy
 between the scores of our `eval/pred.npy` versus the numbers reported in the paper on each attribute group. 
 A detailed attribute-wise breakdown will also be saved in a format shown in `eval/output_detailed.txt`.
 
-# PART II: LSA DATASET
+# The LSA Dataset
 
 ## Introduction
 
